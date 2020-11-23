@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-
+import {useHistory} from 'react-router-dom'
 //Styles
 import './Header.scss';
 import logo from '../../assets/logo_ml.png';
@@ -18,14 +18,13 @@ import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
+//Services
+import GetProductsService from '../../services/getProductsService';
+
 export const Header = props => {
+  const history = useHistory()
 
   const [searchInput, setSearchInput] = useState();
-
-  useEffect(() => {
-    console.log("USE EFFECT")
-  })
-
   const updateInput = (e) => {
     let value = e.target.value;
     setSearchInput(value);
@@ -33,19 +32,13 @@ export const Header = props => {
 
   const searchData = (e) => {
     e.preventDefault()
-    console.log("Data para buscar", searchInput)
-    axios.get('https://api.mercadolibre.com/sites/MLA/search?q='+searchInput)
-    .then(function (response) {
-      // handle success
-      console.log(response);
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-    .then(function () {
-      // always executed
-    });
+
+    if(window.location.href.includes('search')){
+      history.push(`/items?search=${searchInput}`)
+      window.location.reload();
+    }else{
+      history.push(`/items?search=${searchInput}`)
+    } 
   }
 
   return (
