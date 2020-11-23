@@ -23,7 +23,6 @@ export const ProductListView = ({ match }) => {
     .then(function (response) {
       // handle success
       setProductData(response.data);
-      console.log(response)
     })
   }, [searchValue])
 

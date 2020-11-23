@@ -7,6 +7,8 @@ import './ProductList.scss';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { ProductCard } from './../productCard/ProductCard';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 export const ProductList = props => {
   return (
@@ -20,7 +22,7 @@ export const ProductList = props => {
               {props.dataProd.results.map((product) => <ProductCard data={product} />) } 
             </div>
           ):(
-            <p>Cargando...</p>
+            <CircularProgress/>
           )}
         </main>
       </Container>

@@ -23,13 +23,11 @@ export const ProductDetails = props => {
     .then(function (response) {
       // handle success
       setProductData(response.data);
-      console.log("data desde details",response)
     })
     axios.get('https://api.mercadolibre.com/items/'+idProduct+'/description')
     .then(function (response) {
       // handle success
       setProductDescription(response.data);
-      console.log("description desde details",response)
     })
   }, [idProduct])
   return (

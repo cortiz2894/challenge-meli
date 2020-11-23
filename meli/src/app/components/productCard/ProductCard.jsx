@@ -12,8 +12,6 @@ import Card from '@material-ui/core/Card';
 
 export const ProductCard = props => {
   const history = useHistory()
-  console.log(props.data)
-
   const sendData = () => {
     history.push(`/items/${props.data.id}`)
   }
